@@ -285,6 +285,7 @@ MonoBehaviour:
   explosionParticle: {fileID: 431465744}
   crashSound: {fileID: 8300000, guid: 913d6445ee8cc4152a9c18da590ee203, type: 3}
   jumpSound: {fileID: 8300000, guid: 08ab7053d586c458db3774d33c141a4b, type: 3}
+  canDoubleJump: 0
   gameOver: 0
 --- !u!54 &400105537
 Rigidbody:

@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip crashSound;
     public AudioClip jumpSound;
     private AudioSource playerAudio;
+    public bool canDoubleJump = false;
+
     public bool gameOver;
     
 
@@ -33,19 +35,32 @@ public class PlayerController : MonoBehaviour
     }
 
     
-
+    
     // Update is called once per frame
     void Update()
     {
-        
+        //single jump if
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isOnGround = false;
+            playerAnim.speed = 10f;
+           
+           
 
             playerAnim.SetTrigger("Jump_trig");
             dirtParticle.Stop();
             playerAudio.PlayOneShot(jumpSound, 1.0f);
+            canDoubleJump = true;
+        }
+        //double jump if
+        if (Input.GetKeyDown(KeyCode.Space) && playerRb.velocity.y > 0f && canDoubleJump && !gameOver)
+        {
+            canDoubleJump = false;
+
+            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+            playerAnim.SetTrigger("Jump_trig");
+            playerAudio.PlayOneShot(jumpSound, 1);
 
         }
     }
