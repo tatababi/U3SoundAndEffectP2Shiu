@@ -278,14 +278,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90edc82b4da75984285fa9174e6ef7f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 10
-  gravityModifier: 2
+  jumpForce: 15
+  gravityModifier: 5
   isOnGround: 1
   dirtParticle: {fileID: 2053979196}
   explosionParticle: {fileID: 431465744}
   crashSound: {fileID: 8300000, guid: 913d6445ee8cc4152a9c18da590ee203, type: 3}
   jumpSound: {fileID: 8300000, guid: 08ab7053d586c458db3774d33c141a4b, type: 3}
-  canDoubleJump: 0
+  canDoubleJump: 1
   gameOver: 0
 --- !u!54 &400105537
 Rigidbody:

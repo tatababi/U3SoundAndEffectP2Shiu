@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            playerAnim.speed = 10f;
+            playerAnim.speed =  1f;
            
            
 
@@ -61,6 +61,13 @@ public class PlayerController : MonoBehaviour
 
             playerAnim.SetTrigger("Jump_trig");
             playerAudio.PlayOneShot(jumpSound, 1);
+
+            //sprint if
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                Time.timeScale = 2f;
+            }
+            else Time.timeScale = 1f;
 
         }
     }
