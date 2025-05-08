@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-   
+
 
 
     // Start is called before the first frame update
@@ -74,12 +74,30 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetTrigger("Jump_trig");
             playerAudio.PlayOneShot(jumpSound, 1);
 
-
-
-
+        }
+        //sprint if
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && isOnGround && !gameOver)
+        {
+            speed = 5.0f;
+            playerAnim.SetFloat("Speed_f", speed);
+            dashModeActivated = true;
         }
 
+        else if (Input.GetKeyUp(KeyCode.LeftShift) && isOnGround && !gameOver)
+        {
+            speed = 1.0f;
+            playerAnim.SetFloat("Speed_f", speed);
+            dashModeActivated = false;
+
+        }
     }
+
+
+
+
+
+
+
 
 
 
@@ -101,21 +119,9 @@ public class PlayerController : MonoBehaviour
             playerAudio.PlayOneShot(crashSound, 1.0f);
         }
 
-        
-        else if (Input.GetKeyDown(KeyCode.LeftShift) && isOnGround && !gameOver)
-        {
-            speed = 2.0f;
-            playerAnim.SetFloat("Speed_f", speed);
-            dashModeActivated = true;
-        }
 
-        else if (Input.GetKeyUp(KeyCode.LeftShift) && isOnGround && !gameOver)
-        {
-            speed = 1.0f;
-            playerAnim.SetFloat("Speed_f", speed);
-            dashModeActivated = false;
 
-        }
+
         if (!gameOver)
         {
             score += (int)speed;
@@ -127,8 +133,10 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        }
     }
+}
+    
+
 
 
 
